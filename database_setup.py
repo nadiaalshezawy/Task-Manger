@@ -16,13 +16,13 @@ class User(Base):
     email = Column(String(250), nullable=False)
 
 
-class Category(Base):
-    __tablename__ = 'category'
+class Task(Base):
+    __tablename__ = 'task_category'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False, unique=True)
-    user_id = Column(Integer, ForeignKey('user.id'))
-    user = relationship(User)
+    #user_id = Column(Integer, ForeignKey('user.id'))
+    #user = relationship(User)
 
     @property
     def serialize(self):
@@ -30,19 +30,18 @@ class Category(Base):
         return {
             'name': self.name,
             'id': self.id,
-            'user_id': self.user_id,
+            #'user_id': self.user_id,
             }
 
 
-class CategoryItem(Base):
-    __tablename__ = 'category_item'
+class TaskItem(Base):
+    __tablename__ = 'task_item'
 
-    name = Column(String(80), nullable=False, unique=True)
+    #name = Column(String(80), nullable=False, unique=True)
     id = Column(Integer, primary_key=True)
     description = Column(String(250))
-    price = Column(String(8))
-    category_id = Column(Integer, ForeignKey('category.id'))
-    category = relationship(Category)
+    task_id = Column(Integer, ForeignKey('task_category.id'))
+    task_category = relationship(Task)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
@@ -50,14 +49,13 @@ class CategoryItem(Base):
     def serialize(self):
         """Return object data in easily serializeable format"""
         return {
-            'name': self.name,
+            #'name': self.name,
             'description': self.description,
             'id': self.id,
-            'price': self.price,
-            'category_id': self.category_id,
+            'task_id': self.task_id,
             'user_id': self.user_id,
         }
 
 
-engine = create_engine('sqlite:///categoriesitem.db')
+engine = create_engine('sqlite:///taskitem.db')
 Base.metadata.create_all(engine)
