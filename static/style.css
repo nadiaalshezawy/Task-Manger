@@ -1,0 +1,27 @@
+.logo{
+	width: 10%;
+	margin-left: 1%;
+}
+
+
+.logopic{
+	content:url("../static/img/logo.png");
+}
+
+.title {
+	position: absolute;
+	top: 0;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  padding-top: 8%;
+  width: 100%;
+  font-family:Georgia, serif;
+}
+
+
+.categories{
+	margin-left: 2%;
+	display:block;
+	text-align: left;
+}
