@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% include "header.html" %}
+{% block content %}
+
+
+<h3> show sub Task </h3>
+{% for task in subTask %}
+
+      <h3> {{task.description}}</h3>
+
+   <a href = "{{ url_for('editTask',task_id = task.id)}}">
+      <h4>Edit Item</h4>
+   </a>
+   <a href ="{{ url_for('deleteTask',task_id = task.id)}}">
+      <h4>Delete Item</h4>
+   </a>
+   {% endfor %}
+   <a href="{{ url_for('addTask')}}" >
+      <h3> Create a New Item </h3>
+   </a>
+
+{% endblock %}

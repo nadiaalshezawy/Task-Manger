@@ -1,7 +1,23 @@
 {% extends "main.html" %}
+{% include "header.html" %}
 {% block content %}
 
+<div class="indent">
+<h3>delete Task </h3>
+   <form action="#" method = 'post'>
 
-<h3> delete Task </h3>
-
+      <h3>Description:</h3>
+      <input type ='text' size='30' name='description' placeholder = '#'>
+      <h3>Category id:</h3>
+      <input type ='text' size='30' name='category_id' placeholder = '#'>
+      <h3>User id:</h3>
+      <input type ='text' size='30' name='user_id' placeholder = '#'>
+      <input type='submit' value='delete'>
+      <a href =  '#'>
+      <h4>
+      Cancel
+      <h4>
+      </a>
+    </div>
+   </form>
 {% endblock %}

@@ -23,9 +23,18 @@ def mainPage():
 	return render_template('mainPage.html')
 
 # Show All Task page 
-@app.route('/Task')
+@app.route('/')
+@app.route('/showTask')
 def showTask():
-	return render_template('showTask.html')
+	tasks= session.query(Task).all()
+	return render_template('showTask.html', tasks=tasks)
+
+# show sub Task
+@app.route('/showTask/<int:task_id>/')
+def showSubTask(task_id):
+    task = session.query(Task).filter_by(id=task_id).one()
+    subTask = session.query(TaskItem).filter_by(task_id=task_id).all()
+    return render_template('showSubTask.html', subTask=subTask , task=task)
 
 # Add Task page 
 @app.route('/addTask')

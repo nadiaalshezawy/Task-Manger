@@ -4,5 +4,11 @@
 
 
 <h3> show Task </h3>
+{% for task in tasks %}
+<a href = "{{url_for('showSubTask', task_id = task.id)}}">
+      <h2>{{task.name}}</h2>
+
+   <br>
+   {% endfor %}
 
 {% endblock %}
